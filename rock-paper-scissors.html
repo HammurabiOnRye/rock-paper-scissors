@@ -8,17 +8,43 @@
 </head>
 <body>
     <script>
-        
-        let computer = computerChoice();
-
         function computerChoice(){
             const computerChoice = ['rock','paper','scissors'];
             let choice = computerChoice[Math.floor(Math.random()*3)];
             return choice;
         }
+
+        function playerChoice(){
+            let choice = prompt("Type in Rock, Paper, Scissors");
+            if (choice.toLowerCase()==="rock"||choice.toLowerCase()==="paper"||choice.toLowerCase()==="scissors") {
+                let playersChoice = choice.toLowerCase();
+                return playersChoice;
+            } else if (choice === undefined) {
+                console.log("Invalid input, please type in rock, paper, or scissors");
+                playerChoice();
+            }
+            else {
+                console.log("Invalid input, please type in rock, paper, or scissors");
+                playerChoice();
+            }
+        }
+
+        
+
+        function playRound(){
+            let player = playerChoice();
+            let computer = computerChoice();
+
+            if (player===computer){
+                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Tied';
+        
+            } else if (player==="rock"&&computer==="paper") {
+                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Lose :(';
+            } else {
+                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Won! :)';
+            }
+        }
          
-
-
     </script>
 </body>
 </html>
