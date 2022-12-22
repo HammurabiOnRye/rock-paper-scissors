@@ -15,36 +15,58 @@
         }
 
         function playerChoice(){
-            let choice = prompt("Type in Rock, Paper, Scissors");
-            if (choice.toLowerCase()==="rock"||choice.toLowerCase()==="paper"||choice.toLowerCase()==="scissors") {
-                let playersChoice = choice.toLowerCase();
-                return playersChoice;
-            } else if (choice === undefined) {
-                console.log("Invalid input, please type in rock, paper, or scissors");
-                playerChoice();
+            let inputChoice = prompt("Type in Rock, Paper, Scissors");
+            let choice = inputChoice.toLowerCase();
+
+            if (choice==="rock"||choice==="paper"||choice==="scissors") {
+                return choice;
             }
             else {
                 console.log("Invalid input, please type in rock, paper, or scissors");
                 playerChoice();
             }
         }
-
         
-
-        function playRound(){
-            let player = playerChoice();
-            let computer = computerChoice();
-
+        function playRound(player, computer){
+             
             if (player===computer){
-                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Tied';
-        
-            } else if (player==="rock"&&computer==="paper") {
-                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Lose :(';
+                return null;
+            } else if ((player==="rock"&&computer==="paper")||(player==="scissors"&&           computer==="rock")) {
+                return false;
             } else {
-                return 'You picked ' + player + ' and the computer picked ' +computer+ ', You Won! :)';
+                return true;
             }
-        }
-         
+            
+        }  
+        
+        function playGame(){
+            let compWin = 0
+            let playerWin = 0
+            for (let i =0; i<5; i++){
+                
+                let player = playerChoice();
+                let computer = computerChoice(); 
+                
+                playRound(player, computer);
+                
+                if (playRound(player, computer) === true){
+                    console.log('You picked ' +player+ ' and the computer picked ' +computer+ ', You Won! :) Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                }else if (playRound(player, computer)===false){
+                    console.log ('You picked ' + player + ' and the computer picked ' +computer+ ', You Lose :( Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                }else {
+                    console.log('You picked ' + player + ' and the computer picked ' +computer+ ', You Tied Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                }
+
+            }
+            
+                if (compWin>playerWin){
+                    console.log('You lost. Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                } else if(compWin<playerWin){
+                    console.log('You won! Score: Player: ' +playerWin+ ' Computer: ' +compWin); 
+                } else {
+                    console.log('You Tied. Score: Player: ' +playerWin+ ' Computer: ' +compWin); 
+                }
+        }  
     </script>
 </body>
 </html>
