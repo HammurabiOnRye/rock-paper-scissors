@@ -32,12 +32,21 @@
     </div>
    
     <script>
-        const rock = document.querySelector("#rock")
-        const paper = document.querySelector("#paper")
-        const scissors = document.querySelector("#scissors")
-        const icon = document.querySelector(".icon")
+        const rock = document.querySelector("#rock");
+        const paper = document.querySelector("#paper");
+        const scissors = document.querySelector("#scissors");
+        const icons = document.querySelectorAll(".icon");
+        const playerScore = document.querySelector("#player-score");
+        const computerScore = document.querySelector("#computer-score");
         
 
+        //Event Listners 
+        icons.forEach(icon => icon.addEventListener("mouseover", ()=> icon.classList.add("hover")))
+
+        icons.forEach(icon => icon.addEventListener("mouseout", ()=> icon.classList.remove("hover")))
+
+
+        // Game Functions
         function computerChoice(){
             const computerChoice = ['rock','paper','scissors'];
             let choice = computerChoice[Math.floor(Math.random()*3)];
