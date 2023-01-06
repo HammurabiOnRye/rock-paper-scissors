@@ -1,0 +1,41 @@
+body {
+    background-color: grey;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#options {
+    display: flex;
+    justify-content: space-evenly;
+} 
+
+.icon {
+    width: 20%;
+    height: auto;
+    border: 10px solid black; 
+    border-radius: 10px;
+    flex-shrink: 0;
+    /* transition: (1,1); */
+}
+
+.hover{
+    border: 20px solid red; 
+}
+
+#score {
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#player, #computer {
+    display: flex;
+}
+
+h4 {
+    padding-left: 10px;
+}

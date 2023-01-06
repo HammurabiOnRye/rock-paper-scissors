@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div id="container">
+        <h1>Rock Paper Scissors</h1>
+        <div id="options">
+            <img id="rock" class="icon" src="images/rock.png">
+            <img id="paper" class="icon" src="images/paper.png">
+            <img id="scissors" class="icon" src="images/scissors.png">
+        </div>
+
+        <div id="score">
+            <div id="player">
+                <h3>Player Score:</h3>
+                <h4 id="player-score">0</h4>
+            </div>
+            
+            <div id="computer">
+                <h3>Computer Score:</h3>
+                <h4 id="computer-score">0</h4>
+            </div>
+        </div>
+        <h2 id="game-message">Please choose rock, paper or scissors</h2>
+
+    </div>
+   
     <script>
+        const rock = document.querySelector("#rock")
+        const paper = document.querySelector("#paper")
+        const scissors = document.querySelector("#scissors")
+        const icon = document.querySelector(".icon")
+        
+
         function computerChoice(){
             const computerChoice = ['rock','paper','scissors'];
             let choice = computerChoice[Math.floor(Math.random()*3)];
@@ -40,9 +70,10 @@
         }  
         
         function playGame(){
-            let compWin = 0
-            let playerWin = 0
-            for (let i =0; i<5; i++){
+            let compWin = 0;
+            let playerWin = 0;
+            let i = 0;
+            for (i =0; i<5; i++){
                 
                 let player = playerChoice();
                 let computer = computerChoice(); 
@@ -50,11 +81,14 @@
                 playRound(player, computer);
                 
                 if (playRound(player, computer) === true){
-                    console.log('You picked ' +player+ ' and the computer picked ' +computer+ ', You Won! :) Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                    playerWin += 1;
+                    console.log('You picked ' +player+ ' and the computer picked ' +computer+ ', You Won! :) Score: Player: ' +playerWin+ ' Computer: ' +compWin+' '+i);
                 }else if (playRound(player, computer)===false){
-                    console.log ('You picked ' + player + ' and the computer picked ' +computer+ ', You Lose :( Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                    compWin += 1;
+                    console.log ('You picked ' + player + ' and the computer picked ' +computer+ ', You Lose :( Score: Player: ' +playerWin+ ' Computer: ' +compWin+' '+i);
                 }else {
-                    console.log('You picked ' + player + ' and the computer picked ' +computer+ ', You Tied Score: Player: ' +playerWin+ ' Computer: ' +compWin);
+                    (i>0)?i+=-1 :i=0
+                    console.log('You picked ' + player + ' and the computer picked ' +computer+ ', You Tied Score: Player: ' +playerWin+ ' Computer: ' +compWin+' '+i);
                 }
 
             }
